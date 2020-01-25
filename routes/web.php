@@ -11,6 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'DashboardController@main');
+Route::get('/dashboard', 'DashboardController@main');
+Route::get('/home', 'DashboardController@home');
+Route::get('/list-user', 'DashboardController@listUser')->name('list-user');
+
+Auth::routes(['register' => false]);
+
