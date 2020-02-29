@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\User;
+use App\DetailUser;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -100,6 +101,7 @@ class DashboardController extends Controller
 
     public function listUser()
     {
-        return view('dashboard.list-user');
+        $users = User::with('DetailUser')->get();
+        return view('dashboard.list-user', \compact('users'));
     }
 }
